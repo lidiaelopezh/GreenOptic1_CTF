@@ -11,17 +11,18 @@ Se realizará la recopilación de toda la información posible como direcciones 
 
 Escaneo con netdiscover, para encontrar la IP valida de la máquina.
 > netdiscover -r 192.168.115.0/24
+![image](https://github.com/lidiaelopezh/pucp-hacking/blob/463dc77a285fdcaf1a56ff5299964e7b87b5bd5b/images/Imagen1.png)
 
 Escaneo de host en una misma red.
->> nmap -sn 192.168.115.0/24
+> nmap -sn 192.168.115.0/24
 
 Escaneo de puertos en el host con IP 192.168.115.149 de GreenOptic. Detectando el SO, versiones de software, scripts y traceroute
->> nmap -O 192.168.115.149
+> nmap -O 192.168.115.149
 
->> nmap -sV 192.168.115.149
+> nmap -sV 192.168.115.149
 
 Realizando un escaneo más completo de puertos:
->> nmap -T4 -A -v -p- 192.168.115.149 -oA greenOptic.txt
+> nmap -T4 -A -v -p- 192.168.115.149 -oA greenOptic.txt
 
 # 2. ANÁLISIS DE VULNERABILIDADES
 -------------------------------------------------------------------
@@ -33,20 +34,25 @@ Analizamos las componentes de la página web que está en la IP 192.168.115.149.
 
 
 En el Puerto 21:
->> ftp 192.168.115.149
+> ftp 192.168.115.149
 
 
 En el Puerto 10000 se encuentra el servicio de webmin, así que abrimos en el navegador:
->> 192.168.115.149:10000
+> 192.168.115.149:10000
 
 Da un error, asi que se agrega el dominio brindado en el host local 
->> cat /etc/hosts
+> cat /etc/hosts
 
->> nano /etc/hosts
+> nano /etc/hosts
 192.168.115.149 websrv01.greenoptic.vm
 192.168.115.149 greenoptic.vm
 
 Volviendo a cargar la página, se obtiene:
+
+
+
+
+
 
 
 
