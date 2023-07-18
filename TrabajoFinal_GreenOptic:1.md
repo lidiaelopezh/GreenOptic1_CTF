@@ -9,6 +9,7 @@ Se realizará la recopilación de toda la información posible como direcciones 
 
 Escaneo con netdiscover, para encontrar la IP valida de la máquina.
 > netdiscover -r 192.168.115.0/24
+
 ![image](https://github.com/lidiaelopezh/pucp-hacking/blob/463dc77a285fdcaf1a56ff5299964e7b87b5bd5b/images/Imagen1.png)
 
 Escaneo de host en una misma red.
