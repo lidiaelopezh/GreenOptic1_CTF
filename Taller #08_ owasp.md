@@ -1,17 +1,55 @@
-# Descargar la maquina desde 
-https://drive.google.com/file/d/10pgR18E3UYjf4xENDgfWHZyIeBMBeAJj/view?usp=sharing
+# Descargar la maquina CTF desde 
+https://www.vulnhub.com/entry/greenoptic-1,510/
 
-# Ingresar y levantar servicios
-![image](https://github.com/rberrospit/ULIMA-2023-01/assets/50930193/b2d55880-c832-4f0b-9a98-c32588d627d4)
-
-Para ingresar utilizar las credencial **ubuntu**  y para iniciar y parar los servicios
-```
-sudo /opt/lampp/lampp start
-sudo /opt/lampp/lampp stop
 ```
 
-# SSTI
+```
+
+# 1. RECONOCIMIENTO
 -------------------------------------------------------------------
+Se realizará la recopilación de toda la información posible como direcciones IP, nombres de dominios, información de contactos, servicios públicos disponibles en la página. Se dividirá en escaneo de puertos, enumeración de servicios, enumeración de grupos y permisos, enumeración de nombres de dominio.
+
+Escaneo con netdiscover, para encontrar la IP valida de la máquina.
+>> netdiscover -r 192.168.115.0/24
+
+Escaneo de host en una misma red.
+>> nmap -sn 192.168.115.0/24
+
+Escaneo de puertos en el host con IP 192.168.115.149 de GreenOptic. Detectando el SO, versiones de software, scripts y traceroute
+>> nmap -O 192.168.115.149
+
+>> nmap -sV 192.168.115.149
+
+Realizando un escaneo más completo de puertos:
+>> nmap -T4 -A -v -p- 192.168.115.149 -oA greenOptic.txt
+
+# 2. ANÁLISIS DE VULNERABILIDADES
+-------------------------------------------------------------------
+Evaluaremos cuales pueden ser las vulnerabilidades potenciales obtenidas de los escaneos previos, así como de la revisión de los servicios encontrados. Tratando de abrir el servicio de cada puerto, obtenido del resultado del escaneo con nmap.
+
+Analizamos las componentes de la página web que está en la IP 192.168.115.149. Se revisa y se encuentra que:
+- Probador de conectividad en el que puedes introducir tu código postal o el número de teléfono fijo.
+- Formulario de contacto en la parte inferior de la página.
+
+
+En el Puerto 21:
+>> ftp 192.168.115.149
+
+
+En el Puerto 10000 se encuentra el servicio de webmin, así que abrimos en el navegador:
+>> 192.168.115.149:10000
+
+Da un error, asi que se agrega el dominio brindado en el host local 
+>> cat /etc/hosts
+
+>> nano /etc/hosts
+192.168.115.149 websrv01.greenoptic.vm
+192.168.115.149 greenoptic.vm
+
+Volviendo a cargar la página, se obtiene:
+
+
+
 Supongamos que desarrollaste una aplicación web en Python que saluda al usuario al momento de ingresar y la URL es la siguiente:
 
 ![image](https://user-images.githubusercontent.com/50930193/171758045-48c1948a-f9dd-43b3-a6fb-ccfceb7e5c18.png)
