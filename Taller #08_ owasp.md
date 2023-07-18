@@ -10,7 +10,7 @@ https://www.vulnhub.com/entry/greenoptic-1,510/
 Se realizará la recopilación de toda la información posible como direcciones IP, nombres de dominios, información de contactos, servicios públicos disponibles en la página. Se dividirá en escaneo de puertos, enumeración de servicios, enumeración de grupos y permisos, enumeración de nombres de dominio.
 
 Escaneo con netdiscover, para encontrar la IP valida de la máquina.
->> netdiscover -r 192.168.115.0/24
+> netdiscover -r 192.168.115.0/24
 
 Escaneo de host en una misma red.
 >> nmap -sn 192.168.115.0/24
