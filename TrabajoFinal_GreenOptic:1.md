@@ -1,8 +1,6 @@
 # Descargar la maquina CTF desde 
-https://www.vulnhub.com/entry/greenoptic-1,510/
-
 ```
-
+https://www.vulnhub.com/entry/greenoptic-1,510/
 ```
 
 # 1. RECONOCIMIENTO
